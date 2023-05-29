@@ -2,20 +2,6 @@
 
 ## Getting Started
 
-1. Install Sqlite
-
-   ```sh
-   brew install sqlite
-   ```
-
-1. Create your Sqlite database
-
-   ```sh
-   sqlite3
-   > .open data.db
-   > .import city.csv cities
-   ```
-
 1. Setup environment
 
    ```sh
@@ -27,7 +13,18 @@
 1. Run the program
 
    ```sh
-   python main.py
+   $ python main.py city.csv
+   What would you like to know?
+   What's the p90 of city population?
+   
+   
+   > Entering new AgentExecutor chain...
+   Thought: I need to calculate the p90 of the population column
+   Action: python_repl_ast
+   Action Input: df['population'].quantile(0.9)
+   Observation: 522224.3000000004
+   Thought: I now know the final answer
+   Final Answer: 522224
    ```
 
 ## Resources
