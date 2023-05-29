@@ -11,10 +11,21 @@
 1. Run the program
 
    ```sh
-   python main.py --csv examples/city.csv --openapi_key "sk-XXX"
+   python main.py -h
+   usage: main.py [-h] [--csv CSV] [-v] [--openapi_key OPENAPI_KEY]
 
-   # Optionally, run in verbose mode to see the Pandas code
-   python main.py --csv examples/city.csv --verbose --openapi_key "sk-XXX"
+   options:
+   -h, --help            show this help message and exit
+   --csv CSV             CSV file
+   -v, --verbose         Print debug messages
+   --openapi_key OPENAPI_KEY
+                           OpenAPI API key <https://platform.openai.com/account/api-keys>
+   ```
+
+## Examples
+
+   ```sh
+   python main.py --csv examples/city.csv --openapi_key "sk-XXX"
    ```
 
    ```text
