@@ -1,22 +1,20 @@
-import os
 import argparse
-from dotenv import load_dotenv
 from langchain import OpenAI
 from langchain.agents import create_csv_agent
 
-load_dotenv()
-
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-
-llm = OpenAI(openai_api_key=OPENAI_API_KEY, verbose=True)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('filename')
+parser.add_argument("--csv", help="CSV file")
+parser.add_argument("-v", "--verbose", action="store_true", help="Print debug messages")
+parser.add_argument(
+    "--openapi_key",
+    help="""OpenAPI API key\nhttps://platform.openai.com/account/api-keys""",
+)
 args = parser.parse_args()
 
-agent = create_csv_agent(llm, args.filename, verbose=True)
+llm = OpenAI(openai_api_key=args.openapi_key, verbose=args.verbose)
+agent = create_csv_agent(llm, args.csv, verbose=args.verbose)
 
 while True:
-	prompt = input("What would you like to know?\n")
-	agent.run(prompt)
-
+    prompt = input("> ")
+    print(f"{agent.run(prompt)}\n")
