@@ -1,0 +1,4 @@
+.env
+.vscode
+.mypy_cache
+data.db
